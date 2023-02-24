@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Rigidbody2D rb;
+    //int wholeNumber = 16;
+    //float decimalNumber = 4.54f;
+    //string text = "default text";
+    //bool boolean = false;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown("space")) //solo se ejecuta si pulsamos, no si mantenemos
+        //trabajamos con los movimientos laterales
+        float dirX = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(dirX * 7f,rb.velocity.y);
+
+        if(Input.GetButtonDown("Jump")) //solo se ejecuta si pulsamos, no si mantenemos
         {
             //hara que nuestro jugador salte
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 14, 0);
+            rb.velocity = new Vector2(rb.velocity.x, 14f);
         }
+
     }
 }
