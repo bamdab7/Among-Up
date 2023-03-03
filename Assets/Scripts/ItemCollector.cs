@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class ItemCollector : MonoBehaviour
 {
     //contador
-    private int melons = 0;
+    private int fruit = 0;
 
-    [SerializeField] private Text melonsText;
+    [SerializeField] private Text fruitText;
 
     //recoger items por el jugador
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,8 +19,8 @@ public class ItemCollector : MonoBehaviour
             //si chocamos con el objeto, lo eliminamos
             Destroy(collision.gameObject);
             //al eliminarlo, sumarle al contador 
-            melons++;
-            melonsText.text = "Melones : " + melons;
+            fruit++;
+            fruitText.text = "Fruta: " + fruit;
              
         }
     }
