@@ -7,8 +7,9 @@ public class PlayerLife : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-
-   private void Start()
+    //cuando muere
+    [SerializeField] private AudioSource deathSoundEffect;
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -24,6 +25,7 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
+        deathSoundEffect.Play();
         rb.bodyType = RigidbodyType2D.Static; //en el momento de morir se vuelve static y no podemos controlar el jugador
         anim.SetTrigger("death");
     }

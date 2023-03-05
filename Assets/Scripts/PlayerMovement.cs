@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     private enum MovementState { idle,running,jumping,falling }
 
+    // para manejar el audio
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -39,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && IsGrounded()) //solo se ejecuta si pulsamos, no si mantenemos, y ademas si no salimos del suelo
         {
+            //cuando nuestro jugador salta, saldra la musica
+            jumpSoundEffect.Play();
             //hara que nuestro jugador salte
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
