@@ -8,7 +8,7 @@ public class Finish : MonoBehaviour
     private AudioSource finishSound;
 
     //para comprobar si realmente hemos tocado la bandera por primera vez (y que no suene doble el sonido)
-    private bools levelCompleted = false;
+    private bool levelCompleted = false;
 
     private void Start()
     {
@@ -17,11 +17,11 @@ public class Finish : MonoBehaviour
 
    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player" && !levelCompleted)
         {
             finishSound.Play();
-            levelCompleted = true;   
-            Invoke("CompleteLevel", 2f)
+            levelCompleted = true;
+            Invoke("CompleteLevel", 2f);
         }
     }
     private void CompleteLevel()
